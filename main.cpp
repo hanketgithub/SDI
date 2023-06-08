@@ -67,8 +67,6 @@ int main(int argc, char *argv[])
     strcat(output, "_sdi");
     strcat(output, ".bin");
 
-    printf("%s\n", output);
-
     ofd = open
             (
              output,
@@ -87,7 +85,7 @@ int main(int argc, char *argv[])
     // 2 x EAV + 2 x Blank + 2 x SAV + UYVY, all in 10bits
     // I can confirm EAV & SAV needs to be doubled, not sure if blank also needs that.
     //
-    uint32_t stride = (EAV_CYCLE * 2 + BLANK_LEN_1080 * 2 + SAV_CYCLE * 2 + width * 2) * 2; 
+    uint32_t stride = get_stride(width);
     uint8_t *outputBuf = (uint8_t *) calloc(1, stride * height);
 
     printf("stride=%d output frame size=%d\n", stride, stride * height);

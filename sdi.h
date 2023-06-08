@@ -9,6 +9,12 @@
 #define BLANK_LEN_1080      272
 
 
+uint32_t get_stride
+(
+    uint32_t width
+);
+
+
 int convert_yuv420_1080_to_SDI
 (
         uint8_t *dst,

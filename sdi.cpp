@@ -8,12 +8,22 @@
 
 
 #include <stdint.h>
-
 #include <iostream>
 
 #include "sdi.h"
 
+
 using namespace std;
+
+
+uint32_t get_stride
+(
+    uint32_t width
+)
+{
+    return (EAV_CYCLE * 2 + BLANK_LEN_1080 * 2 + SAV_CYCLE * 2 + width * 2) * 2; 
+}
+
 
 int convert_yuv420_1080_to_SDI
 (
